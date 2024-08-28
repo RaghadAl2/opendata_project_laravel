@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>Document</title>
+    <title>register</title>
 </head>
 
 <body dir="rtl" class="bg-indigo-400 ">
@@ -15,7 +15,7 @@
 <a   class="block   px-7" href="/register" aria-current="request()->is('register')?'page' :false">إنشاء حساب</a>
 </div>
 @endguest  
-<div class="px-96 py-36 ">
+<div class="px-96 py-36  ">
 
     
 <form method="POST" action="/register">

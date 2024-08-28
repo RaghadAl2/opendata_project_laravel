@@ -12,15 +12,16 @@ class Tag extends Model
     protected $fillable = [
         'name_ar',
         'name_en',
-        'describe_ar',
-        'describe_en',
-        
+        'user_id'   
     ];
     public function data()
     {
         return $this->belongsToMany(Data::class);
     }
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     
  
 }

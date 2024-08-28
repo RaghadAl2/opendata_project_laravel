@@ -1,5 +1,6 @@
 <x-layout>
-<form method="POST" action="/tags/{{$tag['id']}}">
+
+<form method="POST"  action="{{route('tags.update',$tag['id'])}}">
 @csrf
 @method('PATCH')
 <x-format > تعديل وسم    </x-format >
@@ -20,7 +21,7 @@
 </div> 
 <x-format class="mb-96" > 
 <x-button type="submit">تعديل</x-button>
-<x-aclos href="/tags" class="bg-slate-400 hover:bg-slate-500 text-slate-900" >إلغاء</x-aclos>    
+<x-aclos href="{{route('tags.index')}}" class="bg-slate-400 hover:bg-slate-500 text-slate-900" >إلغاء</x-aclos>    
 </x-format >
 
 

@@ -1,7 +1,7 @@
 <x-layout>
 
 <x-format > إضافة وسم   </x-format>
-<form method="POST" action="/tags">
+<form method="POST" action="{{route('tags.index')}}">
 @csrf
 
 <div class="bg-white p-5 text-sm gap-4 shadow-md flex flex-col ">
@@ -12,7 +12,7 @@
 
 <x-format class="mb-96" > 
 <x-button type="submit">حفظ</x-button>
-<x-aclos href="/tags" class="bg-slate-400 hover:bg-slate-500 text-slate-900" >إلغاء</x-aclos>    
+<x-aclos href="{{route('tags.index')}}" class="bg-slate-400 hover:bg-slate-500 text-slate-900" >إلغاء</x-aclos>    
 </x-format >
 </form>
 

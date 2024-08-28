@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/7/78/Qassim_University_logo.svg" />
 
-    <title>Document</title>
+    <title>login</title>
 </head>
 
 <body dir="rtl" class="bg-indigo-400">

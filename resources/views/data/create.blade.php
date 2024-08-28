@@ -1,5 +1,5 @@
 <x-layout>
-<form method="POST" action="/data">
+<form method="POST" action="{{route('data.index')}}">
 @csrf
 <x-format > إضافة  مجموعة بيانات </x-format >
       <div class="bg-white p-5 text-sm gap-4 shadow-md flex flex-col ">
@@ -11,6 +11,8 @@
         <select id="update" name="update" class="border rounded-lg py-2">
                 <option value="سنوي">سنوي</option>
                 <option value="نصف سنوي">نصف سنوي</option>
+                <option value="شهري">شهري</option>
+                <option value="يومي">يومي</option>
         </select>
         
         <label for="status">النشر في مكتبة البيانات المفتوحة<span class="text-red-600"> &nbsp;  * </span></label>
@@ -28,7 +30,7 @@
                 <div>
                    
                     <input type="checkbox" name="tags[]" id="tag_{{ $tag['id'] }}" value="{{$tag['id']}}" class="accent-indigo-800">
-                            <label for="tag_{{ $tag['id'] }}">{{$tag['name_ar']}}</label>
+                            <label for="tag_{{ $tag['id'] }}">{{$tag->name_ar}}</label>
                 </div>
                 @endforeach
                 
@@ -42,7 +44,7 @@
     </div>
 <x-format class=" mb-20 ">
         <x-button   type="submit">إضافة</x-button >
-        <x-aclos href="/data" class="bg-slate-400 hover:bg-slate-600  text-slate-900" >إلغاء</x-aclos>
+        <x-aclos href="{{route('data.index')}}" class="bg-slate-400 hover:bg-slate-600  text-slate-900" >إلغاء</x-aclos>
 </x-format>
 </form>
  

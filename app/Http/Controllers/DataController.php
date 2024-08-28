@@ -22,9 +22,6 @@ class DataController extends Controller
             ]);
     }
     public function create(){
-        if(Tag::first()==null){
-            return view('tags.create');
-        }
         $tags=Tag::all();
         return view('data.create',['tags'=>$tags]);
 
@@ -88,20 +85,18 @@ class DataController extends Controller
             'update' => ['required'],
             'status' => ['required'],
             'tags' => ['required'], 
-             'tags.*' => ['exists:tags,id'],
+            'tags.*' => ['exists:tags,id'],
         ]);
         
-        Data::create([
+       $data->update([
             'name_ar' => request('name_ar'),
             'name_en'=>request('name_en'),
             'describe_ar'=>request('describe_ar'),
             'describe_en'=>request('describe_en'),
             'update'=>request('update'),
             'status'=>request('status'),
-            'user_id'=>Auth::id(),
-            
         ]);
-        $data->tags()->attach($validatedData['tags']);
+        $data->tags()->sync($validatedData['tags']);
         return redirect('/data/' . $data->id);
     }    
     public function destroy(Data $data){

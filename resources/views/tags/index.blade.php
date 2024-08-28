@@ -1,6 +1,6 @@
 <x-layout>
 <div class="grid place-items-end ">
-  <x-aclos href="tags/create">اضافة وسم</x-aclos>
+  <x-aclos href="{{route('tags.create')}}">اضافة وسم</x-aclos>
 </div>
 <div class="bg-slate-50 rounded-md shadow-md">
                     <div class="border-b p-4  grid grid-cols-3 justify-between text-xs">
@@ -16,16 +16,16 @@
 <div class="bg-white  text-sm gap-2 flex flex-col ">
 
 @foreach($tags as $tag)
-<form method="POST" action="/tags/{{$tag['id']}}">
+<form method="POST" action="{{route('tags.destroy',$tag->id)}}">
     @csrf
     @method('DELETE')
         <div class="border-b p-4 grid grid-cols-3 justify-between  text-xs">
-            <div>{{$tag['name_ar']}}
+            <div>{{$tag->name_ar}}
             </div>
-            <div>{{$tag['name_en']}}
+            <div>{{$tag->name_en}}
             </div>
             <div class="flex flex-row">
-                <a href="/tags/{{$tag['id']}}/edit" class="text-indigo-700 px-1">تعديل</a>
+                <a href="{{route('tags.edit',$tag->id)}}" class="text-indigo-700 px-1">تعديل</a>
                 <button class="text-red-700 px-1">حذف</button>
             </div>
  </div>

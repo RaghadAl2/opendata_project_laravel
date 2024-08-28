@@ -5,36 +5,36 @@
 
         <div class="gap-1 flex flex-col">
         <label for="name_ar">العنوان بالعربية</label> 
-        <div class=" p-2 w-full rounded-md">{{$data['name_ar']}}</div>
+        <div class=" p-2 w-full rounded-md">{{$data->name_ar}}</div>
         </div>   
 
         <div class="gap-1 flex flex-col">
         <label for="name_en">العنوان بالانجليزية </label> 
-        <div class=" p-2 w-full rounded-md">{{$data['name_en']}}</div>
+        <div class=" p-2 w-full rounded-md">{{$data->name_en}}</div>
 
         </div>   
 
         <div class="gap-1 flex flex-col">
         <label for="describe_ar">الوصف بالعربية</label> 
-        <div class=" p-2 w-full rounded-md">{{$data['describe_ar']}}</div>
+        <div class=" p-2 w-full rounded-md">{{$data->describe_ar}}</div>
 
         </div>   
         
         <div class="gap-1 flex flex-col">
         <label for="describe_en">الوصف بالانجليزية</label> 
-        <div class=" p-2 w-full rounded-md">{{$data['describe_en']}}</div>
+        <div class=" p-2 w-full rounded-md">{{$data->describe_en}}</div>
 
         </div>   
 
         <div class="gap-1 flex flex-col">
        <label for="update">التحديث الدوري</label>
-        <div class=" p-2 w-full rounded-md">{{$data['update']}}</div>
+        <div class=" p-2 w-full rounded-md">{{$data->update}}</div>
 
         </div>  
 
         <div class="gap-1 flex flex-col">
         <label for="status"> النشر في مكتبة البيانات المفتوحة</label>
-        <div class=" p-2 w-full rounded-md">{{$data['status']}}</div>
+        <div class=" p-2 w-full rounded-md">{{$data->status}}</div>
 
         </div>  
 
@@ -44,7 +44,7 @@
             <div class="grid grid-cols-3">
             @foreach($data->tags as $tag)
                 <div>
-                    <label for="tag['id']}}">{{$tag['name_ar']}}</label>
+                    <label for="tag['id']">{{$tag->name_ar}}</label>
                 </div>
                 @endforeach
                  
@@ -56,7 +56,7 @@
 
     </div>
 <x-format class=" mb-20 ">
-<form method="POST" action="/data/{{$data['id']}}" id="delete-form"  >
+<form method="POST" action="{{route('data.destroy',$data->id)}}" id="delete-form"  >
     @csrf
     @method('DELETE')
     <x-button class="bg-red-600 hover:bg-red-800 text-slate-900" >حذف</x-button>

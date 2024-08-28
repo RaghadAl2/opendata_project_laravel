@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Data;
 use App\Models\Tag;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class TagController extends Controller
 {
@@ -29,13 +31,15 @@ class TagController extends Controller
             request()->validate([
                 'name_ar' => ['required'],
                 'name_en' => ['required'],
+             
+
            
             ]);
             
             Tag::create([
                 'name_ar' => request('name_ar'),
                 'name_en'=>request('name_en'),
-                
+                'user_id'=>Auth::id(),
                 
             ]);
 
@@ -43,18 +47,23 @@ class TagController extends Controller
         
     }
     public function edit(Tag $tag){
+        Gate::authorize('edit', $tag);
+         
         return view('tags.edit', ['tag' => $tag]);
 
         
     }
     public function update(Tag $tag){
+
+        Gate::authorize('edit', $tag);
+
         request()->validate([
             'name_ar' => ['required'],
             'name_en' => ['required'],
        
         ]);
         
-        Tag::create([
+        $tag->update([
             'name_ar' => request('name_ar'),
             'name_en'=>request('name_en'),
             
@@ -63,7 +72,8 @@ class TagController extends Controller
         return redirect('/tags' );
     }    
     public function destroy(Tag $tag){
-        
+            Gate::authorize('edit', $tag);
+           
             //delete
             $tag->delete();
             //redirect

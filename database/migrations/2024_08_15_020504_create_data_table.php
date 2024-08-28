@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("name_en");
             $table->text("describe_ar");
             $table->text("describe_en");
-            $table->enum('update', ['سنوي', 'نصف سنوي']);
+            $table->enum('update', ['يومي','شهري','سنوي', 'نصف سنوي']);
             $table->enum('status', ['منشور', 'غير منشور']);
             $table->foreignIdFor(\App\Models\User::class)->references('id')
             ->on('users')->onDelete('cascade');;
